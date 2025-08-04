@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syinv Store</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style untuk dot aktif pada carousel */
+        .carousel-dot.active {
+            background-color: #333;
+        }
+        /* Menyembunyikan scrollbar untuk estetika */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Memastikan item carousel mengisi seluruh area tautan */
+        .carousel-item {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Kontainer utama untuk tampilan mobile -->
+    <div class="max-w-sm mx-auto bg-white min-h-screen shadow-lg relative">
+
+        <!-- Halaman Utama -->
+        <div id="main-page">
+            <!-- Header -->
+            <header class="bg-[#4A6D6C] text-white p-4 flex items-center space-x-4 sticky top-0 z-20">
+                <!-- Logo -->
+                <div class="w-16 h-16 bg-white rounded-full p-1 flex-shrink-0">
+                    <div class="w-full h-full rounded-full border-4 border-yellow-400 bg-gray-200 flex items-center justify-center">
+                         <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.293 2.293a1 1 0 010 1.414L11 15l-4 4-6-6 6-6a1 1 0 011.414 0L11 9.586z"></path></svg>
+                    </div>
+                </div>
+                <!-- Nama Toko -->
+                <div>
+                    <h1 class="text-3xl font-bold">Syinv</h1>
+                    <p class="text-2xl font-semibold">Store</p>
+                </div>
+            </header>
+
+            <!-- Konten Utama -->
+            <div class="p-4">
+                <!-- Search Bar -->
+                <div class="relative mb-6">
+                    <input type="text" id="search-input" placeholder="Cari produk..." class="w-full bg-[#A4D4D4] text-gray-700 placeholder-gray-500 rounded-lg py-3 pl-4 pr-10 focus:outline-none">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Image Carousel -->
+                <div id="carousel" class="relative mb-6" data-interval="3000">
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow">
+                        <!-- Tautan dan Gambar-gambar di dalam carousel -->
+                        <a href="#" class="carousel-item product-link" data-product-id="jam-tangan">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gambar Jam Tangan">
+                        </a>
+                        <a href="#" class="carousel-item product-link hidden" data-product-id="sepatu-merah">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gambar Sepatu">
+                        </a>
+                        <a href="#" class="carousel-item product-link hidden" data-product-id="headphone">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gambar Headphone">
+                        </a>
+                        <a href="#" class="carousel-item product-link hidden" data-product-id="kacamata-hitam">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1968&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gambar Kacamata Hitam">
+                        </a>
+                        <a href="#" class="carousel-item product-link hidden" data-product-id="konsol-game">
+                            <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gambar Konsol Game">
+                        </a>
+                        
+                        <!-- Dots Indikator di atas gambar -->
+                        <div class="absolute bottom-4 left-0 right-0 flex justify-center items-center space-x-2 z-10">
+                            <button data-slide-to="0" class="carousel-dot w-3 h-3 bg-white/50 rounded-full"></button>
+                            <button data-slide-to="1" class="carousel-dot w-3 h-3 bg-white/50 rounded-full"></button>
+                            <button data-slide-to="2" class="carousel-dot w-3 h-3 bg-white/50 rounded-full"></button>
+                            <button data-slide-to="3" class="carousel-dot w-3 h-3 bg-white/50 rounded-full"></button>
+                            <button data-slide-to="4" class="carousel-dot w-3 h-3 bg-white/50 rounded-full"></button>
+                        </div>
+
+                        <!-- Tombol Navigasi Kiri/Kanan -->
+                        <button id="prev-button" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/30 text-white rounded-full p-2 focus:outline-none hover:bg-black/50 transition-colors z-10">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button id="next-button" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/30 text-white rounded-full p-2 focus:outline-none hover:bg-black/50 transition-colors z-10">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Galeri Foto Vertikal Produk Unggulan -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4 text-gray-800">Produk Unggulan</h2>
+                    <!-- Kontainer yang bisa di-scroll vertikal -->
+                    <div id="product-list" class="space-y-4">
+                        <!-- Produk akan dimasukkan oleh JavaScript di sini -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Halaman Detail Produk (Tersembunyi secara default) -->
+        <div id="detail-page" class="hidden p-4">
+            <button id="back-button" class="absolute top-4 left-4 bg-white/80 rounded-full p-2 z-10">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <div class="relative h-64 rounded-lg overflow-hidden -mx-4 -mt-4">
+                <img id="detail-image" src="" alt="Detail Produk" class="w-full h-full object-cover">
+            </div>
+            <h1 id="detail-name" class="text-3xl font-bold mt-4">Nama Produk</h1>
+            <p id="detail-category" class="text-gray-500 mb-2">Kategori</p>
+            <p id="detail-price" class="text-3xl font-bold text-green-600 mb-4">Rp 0</p>
+            <p id="detail-description" class="text-gray-700 mb-6">
+                Deskripsi lengkap produk akan muncul di sini. Memberikan penjelasan tentang fitur, bahan, dan keunggulan produk.
+            </p>
+            <button id="download-button" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Download
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DATA PRODUK ---
+            const products = [
+                {
+                    id: 'jam-tangan',
+                    name: 'Jam Tangan Klasik',
+                    category: 'Aksesori',
+                    price: '1.550.000',
+                    imageUrl: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop',
+                    description: 'Jam tangan klasik dengan desain elegan yang cocok untuk segala acara. Tahan air hingga 50m dan dibuat dengan material berkualitas tinggi.'
+                },
+                {
+                    id: 'sepatu-merah',
+                    name: 'Sepatu Lari Merah',
+                    category: 'Alas Kaki',
+                    price: '899.000',
+                    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop',
+                    description: 'Sepatu lari yang ringan dan nyaman, didesain untuk memberikan performa maksimal. Sol yang empuk dan bahan yang breathable.'
+                },
+                {
+                    id: 'headphone',
+                    name: 'Headphone Wireless',
+                    category: 'Elektronik',
+                    price: '1.100.000',
+                    imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop',
+                    description: 'Nikmati kualitas suara premium tanpa kabel. Baterai tahan hingga 20 jam dan dilengkapi dengan noise-cancellation.'
+                },
+                {
+                    id: 'kacamata-hitam',
+                    name: 'Kacamata Hitam',
+                    category: 'Aksesori',
+                    price: '450.000',
+                    imageUrl: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1968&auto=format&fit=crop',
+                    description: 'Lindungi mata Anda dari sinar UV dengan gaya. Lensa polarisasi untuk mengurangi silau dan bingkai yang ringan.'
+                },
+                {
+                    id: 'konsol-game',
+                    name: 'Konsol Game Next-Gen',
+                    category: 'Elektronik',
+                    price: '7.800.000',
+                    imageUrl: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1974&auto=format&fit=crop',
+                    description: 'Rasakan pengalaman gaming generasi terbaru dengan grafis memukau dan waktu loading super cepat. Termasuk satu controller.'
+                },
+            ];
+
+            // --- ELEMEN DOM ---
+            const mainPage = document.getElementById('main-page');
+            const detailPage = document.getElementById('detail-page');
+            const productListContainer = document.getElementById('product-list');
+            const backButton = document.getElementById('back-button');
+            const downloadButton = document.getElementById('download-button');
+            const searchInput = document.getElementById('search-input');
+
+            // --- FUNGSI UNTUK MENAMPILKAN DAFTAR PRODUK DI HALAMAN UTAMA ---
+            function renderProductList() {
+                productListContainer.innerHTML = ''; // Kosongkan dulu
+                products.forEach(product => {
+                    const productElement = document.createElement('a');
+                    productElement.href = '#';
+                    productElement.className = 'block h-48 rounded-lg overflow-hidden shadow product-link';
+                    productElement.dataset.productId = product.id;
+                    
+                    productElement.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-full object-cover">
+                    `;
+                    productListContainer.appendChild(productElement);
+                });
+            }
+
+
+            // --- FUNGSI UNTUK NAVIGASI HALAMAN ---
+            function showDetailPage(productId) {
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+
+                // Isi data ke halaman detail
+                document.getElementById('detail-image').src = product.imageUrl;
+                document.getElementById('detail-name').textContent = product.name;
+                document.getElementById('detail-category').textContent = product.category;
+                document.getElementById('detail-price').textContent = `Rp ${product.price}`;
+                document.getElementById('detail-description').textContent = product.description;
+
+                // Tampilkan halaman detail dan sembunyikan halaman utama
+                mainPage.classList.add('hidden');
+                detailPage.classList.remove('hidden');
+                window.scrollTo(0, 0); // Scroll ke atas
+            }
+
+            function showMainPage() {
+                mainPage.classList.remove('hidden');
+                detailPage.classList.add('hidden');
+                startAutoPlay(); // Mulai lagi carousel saat kembali ke halaman utama
+            }
+
+            // --- FUNGSI UNTUK DOWNLOAD ---
+            async function downloadImage() {
+                const imageUrl = document.getElementById('detail-image').src;
+                const imageName = document.getElementById('detail-name').textContent.replace(/\s+/g, '-').toLowerCase() + '.jpg';
+
+                try {
+                    const response = await fetch(imageUrl);
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = imageName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                } catch (error) {
+                    console.error('Gagal mengunduh gambar:', error);
+                    alert('Maaf, gambar gagal diunduh.');
+                }
+            }
+            
+            // --- FUNGSI PENCARIAN ---
+            function handleSearch(event) {
+                if (event.key === 'Enter') {
+                    const query = searchInput.value.trim().toLowerCase();
+                    if (query === "") return;
+
+                    const foundProduct = products.find(p => p.name.toLowerCase().includes(query));
+
+                    if (foundProduct) {
+                        showDetailPage(foundProduct.id);
+                        searchInput.value = ''; // Kosongkan input setelah berhasil
+                    } else {
+                        searchInput.value = 'Pencarian tidak ditemukan';
+                    }
+                }
+            }
+
+            // --- EVENT LISTENERS ---
+            backButton.addEventListener('click', showMainPage);
+            downloadButton.addEventListener('click', downloadImage);
+            searchInput.addEventListener('keyup', handleSearch);
+            // Hapus pesan "tidak ditemukan" saat pengguna klik input lagi
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value === 'Pencarian tidak ditemukan') {
+                    searchInput.value = '';
+                }
+            });
+
+
+            document.body.addEventListener('click', function(event) {
+                const link = event.target.closest('.product-link');
+                if (link) {
+                    event.preventDefault();
+                    stopAutoPlay(); 
+                    const productId = link.dataset.productId;
+                    showDetailPage(productId);
+                }
+            });
+
+            // --- LOGIKA CAROUSEL ---
+            const carousel = document.getElementById('carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            const totalItems = items.length;
+            let currentIndex = 0;
+            let intervalId = null;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function showSlide(index) {
+                const newIndex = (index + totalItems) % totalItems;
+                items.forEach(item => item.classList.add('hidden'));
+                items[newIndex].classList.remove('hidden');
+                dots.forEach(dot => {
+                    dot.classList.remove('active', 'bg-gray-800');
+                    dot.classList.add('bg-white/50');
+                });
+                dots[newIndex].classList.add('active', 'bg-gray-800');
+                dots[newIndex].classList.remove('bg-white/50');
+                currentIndex = newIndex;
+            }
+
+            function nextSlide() { showSlide(currentIndex + 1); }
+            function prevSlide() { showSlide(currentIndex - 1); }
+            
+            function startAutoPlay() {
+                const intervalTime = parseInt(carousel.dataset.interval, 10) || 3000;
+                if(intervalId) clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, intervalTime);
+            }
+
+            function stopAutoPlay() { clearInterval(intervalId); }
+
+            prevButton.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); stopAutoPlay(); startAutoPlay(); });
+            nextButton.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); stopAutoPlay(); startAutoPlay(); });
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const slideIndex = parseInt(dot.dataset.slideTo, 10);
+                    showSlide(slideIndex);
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+            });
+            carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; stopAutoPlay(); });
+            carousel.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); startAutoPlay(); });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) { nextSlide(); }
+                if (touchEndX > touchStartX + 50) { prevSlide(); }
+            }
+            
+            // --- INISIALISASI ---
+            renderProductList();
+            showSlide(0);
+            startAutoPlay();
+        });
+    </script>
+
+</body>
+</html>
